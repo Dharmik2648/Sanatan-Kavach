@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Sanatan Kavach: privacy-first temple operations, devotee safety, and live crowd flow.">
+  <title>Sanatan Kavach | Temple Safety Grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root { color-scheme: dark; --ink: #0f172a; --panel: #131f33; --line: #26344a; --muted: #94a3b8; --saffron: #f59e0b; --mint: #34d399; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ink); color: #e2e8f0; font-family: 'DM Sans', sans-serif; }
+    button { font: inherit; }
+    .display { font-family: 'Manrope', sans-serif; }
+    .mono { font-family: 'DM Mono', monospace; }
+    .shell { width: min(100% - 40px, 1220px); margin-inline: auto; }
+    .panel { background: linear-gradient(145deg, rgba(23, 37, 59, .97), rgba(17, 28, 46, .97)); border: 1px solid var(--line); }
+    .grid-bg { background-image: linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px); background-size: 32px 32px; }
+    .tab-button { color: #94a3b8; border-bottom: 2px solid transparent; transition: color .18s, border-color .18s, background .18s; }
+    .tab-button:hover { color: #f8fafc; background: rgba(255,255,255,.025); }
+    .tab-button[aria-selected="true"] { color: #fbbf24; border-color: #f59e0b; }
+    .view { animation: enter .28s ease both; }
+    @keyframes enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .pulse-dot { animation: pulse 2s infinite; }
+    @keyframes pulse { 50% { box-shadow: 0 0 0 5px rgba(52,211,153,.12); } }
+    .meter { background: #26344a; overflow: hidden; border-radius: 99px; height: 5px; }
+    .meter > span { display: block; height: 100%; border-radius: inherit; transition: width .4s ease; }
+    .soft-scroll::-webkit-scrollbar { width: 5px; }
+    .soft-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 9px; }
+    @media (max-width: 640px) { .shell { width: min(100% - 28px, 1220px); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="grid-bg min-h-screen">
+    <header class="sticky top-0 z-30 border-b border-slate-700/70 bg-[#0f172a]/95 backdrop-blur-xl">
+      <div class="shell flex min-h-[76px] items-center justify-between gap-5 py-3">
+        <a href="#home" class="flex min-w-0 items-center gap-3" aria-label="Sanatan Kavach home">
+          <span class="relative grid size-11 shrink-0 place-items-center rounded-xl border border-amber-400/30 bg-amber-400/10 text-amber-400">
+            <i data-lucide="shield-check" class="size-6"></i>
+            <span class="absolute -right-1 -top-1 size-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0f172a]"></span>
+          </span>
+          <span class="min-w-0">
+            <span class="display block truncate text-base font-extrabold tracking-[0] text-slate-50">Sanatan <span class="text-amber-400">Kavach</span></span>
+            <span class="mono block text-[9px] uppercase tracking-[.12em] text-slate-500">Temple safety grid <span class="text-slate-700">/</span> CS 2026</span>
+          </span>
+        </a>
+        <div class="hidden items-center gap-2 rounded-md border border-slate-700 bg-slate-800/70 px-3 py-2 text-xs text-slate-300 sm:flex">
+          <i data-lucide="code-2" class="size-3.5 text-amber-400"></i>
+          Developed by <span class="font-semibold text-slate-100">The Chaos Coders</span>
+        </div>
+        <div class="ml-auto flex items-center gap-2 rounded-md border border-emerald-500/25 bg-emerald-500/[.08] px-2.5 py-2 sm:ml-0 sm:px-3">
+          <span class="pulse-dot size-2 shrink-0 rounded-full bg-emerald-400"></span>
+          <span class="mono text-[9px] font-medium leading-tight tracking-[.04em] text-emerald-300 sm:text-[10px]">ZERO-PII &amp; BIOMETRIC-FREE<br class="sm:hidden"> ARCHITECTURE ACTIVE</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="home" class="shell pb-16">
+      <section aria-label="Verified temple broadcast" class="mt-5 overflow-hidden rounded-lg border border-amber-400/20 bg-amber-400/[.055]">
+        <div class="flex items-center gap-3 px-4 py-3 sm:px-5">
+          <span class="grid size-8 shrink-0 place-items-center rounded-md bg-amber-400/10 text-amber-400"><i data-lucide="radio" class="size-4"></i></span>
+          <span class="mono shrink-0 text-[9px] font-medium uppercase tracking-[.1em] text-amber-400 sm:text-[10px]">Verified broadcast</span>
+          <span class="hidden h-5 w-px bg-amber-400/20 sm:block"></span>
+          <p class="min-w-0 flex-1 text-xs leading-relaxed text-slate-300 sm:text-sm"><span class="mono text-slate-500">[09:30 AM]</span> Morning Mangala Aarti completed smoothly. All gates operational. <span class="text-slate-500">— Signed: Temple Admin #01</span></p>
+          <span class="hidden shrink-0 items-center gap-1.5 text-[10px] text-emerald-400 md:flex"><i data-lucide="badge-check" class="size-3.5"></i> Signature verified</span>
+        </div>
+      </section>
+
+      <section class="flex flex-col gap-5 pb-5 pt-8 sm:flex-row sm:items-end sm:justify-between sm:pt-10">
+        <div>
+          <div class="mono mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[.14em] text-slate-500"><span class="size-1.5 rounded-full bg-amber-400"></span> Cyber Samvad Hackathon 2026</div>
+          <h1 class="display text-[27px] font-extrabold leading-tight tracking-[0] text-white sm:text-[34px]">A safer darshan, <span class="text-amber-400">by design.</span></h1>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">AI-powered temple operations and crowd flow, built around devotee dignity and privacy.</p>
+        </div>
+        <div class="flex items-center gap-2 self-start rounded-md border border-slate-700 bg-slate-800/60 px-3 py-2 sm:self-auto">
+          <i data-lucide="clock-3" class="size-3.5 text-slate-500"></i>
+          <span class="mono text-[10px] text-slate-400">GRID STATUS</span>
+          <span class="mono text-[10px] text-emerald-400">LIVE</span>
+          <span class="mono text-[10px] text-slate-500" id="clock">--:--:--</span>
+        </div>
+      </section>
+
+      <nav class="-mx-1 flex overflow-x-auto border-b border-slate-700/80 px-1" role="tablist" aria-label="Application views">
+        <button class="tab-button flex min-h-12 shrink-0 items-center gap-2 px-3 text-xs font-semibold sm:px-5 sm:text-sm" type="button" role="tab" id="tab-devotee" aria-controls="view-devotee" aria-selected="true" data-tab="devotee"><i data-lucide="users" class="size-4"></i><span>🙏 Devotee Portal <span class="text-slate-500">(Public View)</span></span></button>
+        <button class="tab-button flex min-h-12 shrink-0 items-center gap-2 px-3 text-xs font-semibold sm:px-5 sm:text-sm" type="button" role="tab" id="tab-staff" aria-controls="view-staff" aria-selected="false" data-tab="staff" tabindex="-1"><i data-lucide="sirens" class="size-4"></i><span>🚨 Staff SecOps Console <span class="text-slate-500">(Authorized)</span></span></button>
+        <button class="tab-button flex min-h-12 shrink-0 items-center gap-2 px-3 text-xs font-semibold sm:px-5 sm:text-sm" type="button" role="tab" id="tab-privacy" aria-controls="view-privacy" aria-selected="false" data-tab="privacy" tabindex="-1"><i data-lucide="lock-keyhole" class="size-4"></i><span>🔒 Cybersecurity <span class="text-slate-500">&amp; Privacy Architecture</span></span></button>
+      </nav>
+
+      <section class="view pt-6" id="view-devotee" role="tabpanel" aria-labelledby="tab-devotee" data-view="devotee">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div><p class="mono text-[10px] uppercase tracking-[.12em] text-slate-500">Public access <span class="px-1 text-slate-700">/</span> no sign-in required</p><h2 class="display mt-1 text-xl font-bold text-slate-100">Darshan &amp; visitor services</h2></div>
+          <span class="flex items-center gap-2 text-xs text-slate-400"><span class="pulse-dot size-1.5 rounded-full bg-emerald-400"></span> Crowd conditions refresh live</span>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3" id="zone-cards" aria-live="polite"></div>
+
+        <div class="mt-5 grid gap-5 lg:grid-cols-[1.1fr_.9fr]">
+          <section class="panel rounded-lg p-4 sm:p-5" aria-labelledby="faq-title">
+            <div class="mb-4 flex items-center justify-between gap-3"><div><p class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">Quick guidance</p><h3 class="display mt-1 text-base font-bold text-slate-100" id="faq-title">Frequently asked questions</h3></div><i data-lucide="message-circle-question" class="size-5 text-slate-500"></i></div>
+            <div class="divide-y divide-slate-700/70" id="faq-list"></div>
+          </section>
+          <section class="panel rounded-lg p-4 sm:p-5" aria-labelledby="help-title">
+            <div class="mb-4 flex items-center justify-between gap-3"><div><p class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">Help desk</p><h3 class="display mt-1 text-base font-bold text-slate-100" id="help-title">Lost &amp; found</h3></div><span class="mono rounded border border-amber-400/20 bg-amber-400/[.06] px-2 py-1 text-[9px] text-amber-300">NO PERSONAL DATA</span></div>
+            <div id="public-tickets" class="space-y-2"></div>
+            <button type="button" id="report-item" class="mt-4 flex w-full items-center justify-center gap-2 rounded-md border border-dashed border-slate-600 px-3 py-2.5 text-xs font-semibold text-slate-300 transition hover:border-amber-400/50 hover:bg-amber-400/[.04] hover:text-amber-300"><i data-lucide="plus" class="size-4"></i> Log a found item anonymously</button>
+            <p class="mt-2 text-center text-[10px] text-slate-500">No names, phone numbers, biometrics or identifiers collected.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="view hidden pt-6" id="view-staff" role="tabpanel" aria-labelledby="tab-staff" data-view="staff">
+        <div class="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p class="mono text-[10px] uppercase tracking-[.12em] text-slate-500">Restricted workspace <span class="px-1 text-slate-700">/</span> staff access</p><h2 class="display mt-1 text-xl font-bold text-slate-100">SecOps command console</h2></div><div class="flex w-fit items-center gap-2 rounded-md border border-emerald-500/20 bg-emerald-500/[.06] px-3 py-2 text-xs text-emerald-300"><i data-lucide="key-round" class="size-3.5"></i> Staff session authorized <span class="mono text-emerald-500/70">· TIER 02</span></div></div>
+        <div class="mb-5 grid gap-3 sm:grid-cols-3">
+          <article class="panel flex items-center gap-4 rounded-lg p-4"><span class="grid size-10 place-items-center rounded-md bg-emerald-400/10 text-emerald-400"><i data-lucide="shield-check" class="size-5"></i></span><div><p class="mono text-[9px] uppercase tracking-[.1em] text-slate-500">Security posture</p><p class="mt-1 text-sm font-semibold text-emerald-300">All systems nominal</p></div></article>
+          <article class="panel flex items-center gap-4 rounded-lg p-4"><span class="grid size-10 place-items-center rounded-md bg-amber-400/10 text-amber-400"><i data-lucide="door-open" class="size-5"></i></span><div><p class="mono text-[9px] uppercase tracking-[.1em] text-slate-500">Monitored zones</p><p class="mt-1 text-sm font-semibold text-slate-100"><span id="zone-count">3</span> gates reporting</p></div></article>
+          <article class="panel flex items-center gap-4 rounded-lg p-4"><span class="grid size-10 place-items-center rounded-md bg-sky-400/10 text-sky-300"><i data-lucide="fingerprint" class="size-5"></i></span><div><p class="mono text-[9px] uppercase tracking-[.1em] text-slate-500">Identity records</p><p class="mt-1 text-sm font-semibold text-slate-100">0 collected <span class="text-emerald-400">✓</span></p></div></article>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-[1.05fr_.95fr]">
+          <section class="panel rounded-lg p-4 sm:p-5"><div class="mb-4 flex items-center justify-between"><div><p class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">Occupancy telemetry</p><h3 class="display mt-1 text-base font-bold">Zone operations</h3></div><button class="rounded-md border border-slate-700 p-2 text-slate-400 transition hover:bg-slate-700/50 hover:text-slate-100" type="button" id="refresh-zones" aria-label="Refresh zone telemetry" title="Refresh telemetry"><i data-lucide="refresh-cw" class="size-4"></i></button></div><div id="staff-zones" class="space-y-2"></div></section>
+          <section class="panel rounded-lg p-4 sm:p-5"><div class="mb-4 flex items-center justify-between"><div><p class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">Anonymous help queue</p><h3 class="display mt-1 text-base font-bold">Lost &amp; found tickets</h3></div><span class="mono rounded border border-slate-700 px-2 py-1 text-[9px] text-slate-400" id="ticket-counter">02 OPEN</span></div><div id="staff-tickets" class="soft-scroll max-h-[360px] space-y-2 overflow-y-auto pr-1"></div></section>
+        </div>
+        <section class="panel mt-5 rounded-lg p-4 sm:p-5"><div class="mb-4 flex items-center justify-between"><div><p class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">Tamper-evident event stream</p><h3 class="display mt-1 text-base font-bold">Security audit log</h3></div><span class="flex items-center gap-1.5 text-[10px] text-emerald-400"><i data-lucide="radio" class="size-3"></i> STREAMING</span></div><div id="audit-log" class="space-y-2"></div></section>
+      </section>
+
+      <section class="view hidden pt-6" id="view-privacy" role="tabpanel" aria-labelledby="tab-privacy" data-view="privacy">
+        <div class="mb-6"><p class="mono text-[10px] uppercase tracking-[.12em] text-slate-500">Trust is the foundation <span class="px-1 text-slate-700">/</span> security architecture</p><h2 class="display mt-1 text-xl font-bold text-slate-100">Privacy is not a feature. It is the foundation.</h2><p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">A zero-trust safety grid designed to protect devotees while helping temple staff make better operational decisions.</p></div>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="panel rounded-lg p-5"><span class="grid size-10 place-items-center rounded-md bg-emerald-400/10 text-emerald-400"><i data-lucide="scan-eye-off" class="size-5"></i></span><h3 class="display mt-4 text-sm font-bold">No biometrics. Ever.</h3><p class="mt-2 text-xs leading-relaxed text-slate-400">No facial recognition, fingerprint scans, or device tracking. Crowd flow is measured from anonymous, aggregate signals.</p><span class="mono mt-4 inline-flex items-center gap-1.5 text-[9px] text-emerald-400"><i data-lucide="circle-check" class="size-3"></i> ZERO IDENTITY CAPTURE</span></article>
+          <article class="panel rounded-lg p-5"><span class="grid size-10 place-items-center rounded-md bg-sky-400/10 text-sky-300"><i data-lucide="lock-keyhole" class="size-5"></i></span><h3 class="display mt-4 text-sm font-bold">Zero-trust access</h3><p class="mt-2 text-xs leading-relaxed text-slate-400">Every staff action is authenticated, scoped to a role, and recorded in a tamper-evident audit stream.</p><span class="mono mt-4 inline-flex items-center gap-1.5 text-[9px] text-sky-300"><i data-lucide="circle-check" class="size-3"></i> ROLE-BASED AUTHORIZATION</span></article>
+          <article class="panel rounded-lg p-5"><span class="grid size-10 place-items-center rounded-md bg-amber-400/10 text-amber-400"><i data-lucide="database-zap" class="size-5"></i></span><h3 class="display mt-4 text-sm font-bold">Minimal data, short life</h3><p class="mt-2 text-xs leading-relaxed text-slate-400">Operational telemetry is aggregated at the source. Temporary event data expires automatically under retention limits.</p><span class="mono mt-4 inline-flex items-center gap-1.5 text-[9px] text-amber-300"><i data-lucide="circle-check" class="size-3"></i> DATA MINIMIZATION</span></article>
+          <article class="panel rounded-lg p-5"><span class="grid size-10 place-items-center rounded-md bg-rose-400/10 text-rose-300"><i data-lucide="signature" class="size-5"></i></span><h3 class="display mt-4 text-sm font-bold">Signed announcements</h3><p class="mt-2 text-xs leading-relaxed text-slate-400">Broadcasts carry a verifiable origin so devotees can distinguish official safety updates from untrusted messages.</p><span class="mono mt-4 inline-flex items-center gap-1.5 text-[9px] text-rose-300"><i data-lucide="circle-check" class="size-3"></i> MESSAGE INTEGRITY</span></article>
+          <article class="panel rounded-lg p-5"><span class="grid size-10 place-items-center rounded-md bg-violet-400/10 text-violet-300"><i data-lucide="network" class="size-5"></i></span><h3 class="display mt-4 text-sm font-bold">Resilient by design</h3><p class="mt-2 text-xs leading-relaxed text-slate-400">Zone-level systems can continue their essential safety function independently if central connectivity is interrupted.</p><span class="mono mt-4 inline-flex items-center gap-1.5 text-[9px] text-violet-300"><i data-lucide="circle-check" class="size-3"></i> GRACEFUL DEGRADATION</span></article>
+          <article class="panel rounded-lg p-5"><span class="grid size-10 place-items-center rounded-md bg-orange-400/10 text-orange-300"><i data-lucide="clipboard-check" class="size-5"></i></span><h3 class="display mt-4 text-sm font-bold">Accountable operations</h3><p class="mt-2 text-xs leading-relaxed text-slate-400">Security events are traceable to authorized staff roles without exposing devotee identities or creating personal profiles.</p><span class="mono mt-4 inline-flex items-center gap-1.5 text-[9px] text-orange-300"><i data-lucide="circle-check" class="size-3"></i> AUDITABLE, NOT INVASIVE</span></article>
+        </div>
+        <section class="panel mt-5 rounded-lg p-5 sm:p-6"><div class="mb-5 flex items-center gap-3"><span class="grid size-9 place-items-center rounded-md bg-amber-400/10 text-amber-400"><i data-lucide="workflow" class="size-4"></i></span><div><p class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">Data path</p><h3 class="display text-sm font-bold">From signal to safer flow</h3></div></div><div class="grid items-center gap-2 sm:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr]"><div class="rounded-md border border-slate-700 bg-slate-900/60 p-3"><i data-lucide="radio-tower" class="size-4 text-slate-400"></i><p class="mt-2 text-xs font-semibold">Zone sensors</p><p class="mt-1 text-[10px] text-slate-500">Non-identifying counts</p></div><i data-lucide="arrow-right" class="mx-auto hidden size-4 text-slate-600 sm:block"></i><div class="rounded-md border border-slate-700 bg-slate-900/60 p-3"><i data-lucide="filter" class="size-4 text-amber-400"></i><p class="mt-2 text-xs font-semibold">Edge aggregation</p><p class="mt-1 text-[10px] text-slate-500">Personal data discarded</p></div><i data-lucide="arrow-right" class="mx-auto hidden size-4 text-slate-600 sm:block"></i><div class="rounded-md border border-slate-700 bg-slate-900/60 p-3"><i data-lucide="chart-no-axes-combined" class="size-4 text-sky-300"></i><p class="mt-2 text-xs font-semibold">Flow telemetry</p><p class="mt-1 text-[10px] text-slate-500">Aggregate occupancy only</p></div><i data-lucide="arrow-right" class="mx-auto hidden size-4 text-slate-600 sm:block"></i><div class="rounded-md border border-emerald-500/20 bg-emerald-500/[.05] p-3"><i data-lucide="shield-check" class="size-4 text-emerald-400"></i><p class="mt-2 text-xs font-semibold">Safer darshan</p><p class="mt-1 text-[10px] text-slate-500">Actionable zone guidance</p></div></div></section>
+      </section>
+
+      <footer class="mt-10 flex flex-col justify-between gap-2 border-t border-slate-800 pt-4 text-[10px] text-slate-600 sm:flex-row sm:items-center"><span class="mono">SANATAN KAVACH <span class="text-slate-700">·</span> CYBER SAMVAD HACKATHON 2026</span><span>Safety with dignity. Security without surveillance.</span></footer>
+    </main>
+    <div id="toast" class="pointer-events-none fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 translate-y-3 items-center gap-2 rounded-md border border-emerald-500/30 bg-slate-900 px-4 py-3 text-xs text-emerald-300 opacity-0 shadow-2xl transition-all" role="status" aria-live="polite"><i data-lucide="circle-check" class="size-4"></i><span id="toast-message"></span></div>
+  </div>
+  <script>
+    const appState = {
+      zones: [
+        { id: 'gate-1', gate: 'Gate 1', name: 'Main Sanctum', occupancy: 38, capacity: 100, status: 'Calm', direction: 'Entry & darshan', trend: 'steady', color: 'emerald' },
+        { id: 'gate-2', gate: 'Gate 2', name: 'North Corridor', occupancy: 76, capacity: 100, status: 'Busy', direction: 'Queue moving slowly', trend: 'rising', color: 'amber' },
+        { id: 'gate-3', gate: 'Gate 3', name: 'East Exit', occupancy: 21, capacity: 100, status: 'Clear', direction: 'Exit route open', trend: 'steady', color: 'emerald' }
+      ],
+      faqs: [
+        { question: 'Which gate has the shortest queue?', answer: 'Gate 3 (East Exit) is currently clear. For darshan entry, Gate 1 (Main Sanctum) is calm; Gate 2 has a slower-moving queue.', approved: true },
+        { question: 'Where can I get assistance at the temple?', answer: 'Visit the nearest staffed gate. Temple volunteers can help with accessibility needs, directions, and lost items.', approved: true },
+        { question: 'Does this system collect my personal information?', answer: 'No. Sanatan Kavach uses anonymous, aggregate crowd counts. It does not collect names, biometrics, device IDs, or personal profiles.', approved: true }
+      ],
+      tickets: [
+        { id: 'LF-2041', item: 'Blue cloth pouch', location: 'Near Gate 2 · North Corridor', time: '09:12 AM', status: 'Open', icon: 'briefcase' },
+        { id: 'LF-2042', item: 'Child-sized sandal', location: 'Gate 1 · Main Sanctum', time: '09:26 AM', status: 'Open', icon: 'footprints' }
+      ],
+      audit: [
+        { time: '09:30:14', level: 'INFO', event: 'Broadcast signature verified', detail: 'Temple Admin #01 · Ed25519 signature valid' },
+        { time: '09:29:52', level: 'INFO', event: 'Zone telemetry aggregated', detail: '3 zones · identity fields: none' },
+        { time: '09:28:07', level: 'SECURE', event: 'Staff session authorized', detail: 'Role: Operations Lead · Tier 02' },
+        { time: '09:26:41', level: 'INFO', event: 'Lost & found ticket created', detail: 'LF-2042 · anonymous submission' }
+      ]
+    };
+
+    const colorMap = {
+      emerald: { text: 'text-emerald-300', bg: 'bg-emerald-400', badge: 'border-emerald-500/20 bg-emerald-500/[.07] text-emerald-300', icon: 'text-emerald-400' },
+      amber: { text: 'text-amber-300', bg: 'bg-amber-400', badge: 'border-amber-500/20 bg-amber-500/[.07] text-amber-300', icon: 'text-amber-400' },
+      rose: { text: 'text-rose-300', bg: 'bg-rose-400', badge: 'border-rose-500/20 bg-rose-500/[.07] text-rose-300', icon: 'text-rose-400' }
+    };
+    const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+
+    function renderZones() {
+      const publicContainer = document.getElementById('zone-cards');
+      const staffContainer = document.getElementById('staff-zones');
+      publicContainer.innerHTML = appState.zones.map((zone) => {
+        const colors = colorMap[zone.color];
+        const statusIcon = zone.color === 'emerald' ? 'circle-check' : zone.color === 'amber' ? 'triangle-alert' : 'octagon-alert';
+        return `<article class="panel rounded-lg p-4 sm:p-5"><div class="flex items-start justify-between gap-3"><div><span class="mono text-[9px] uppercase tracking-[.12em] text-slate-500">${escapeHTML(zone.gate)}</span><h3 class="display mt-1 text-[15px] font-bold text-slate-100">${escapeHTML(zone.name)}</h3></div><span class="flex items-center gap-1.5 rounded border px-2 py-1 text-[9px] font-semibold ${colors.badge}"><i data-lucide="${statusIcon}" class="size-3"></i>${escapeHTML(zone.status)}</span></div><div class="mt-5 flex items-end justify-between"><span class="text-xs text-slate-500">Anonymous occupancy</span><span class="mono text-lg font-medium ${colors.text}">${zone.occupancy}<span class="text-xs text-slate-500"> / ${zone.capacity}</span></span></div><div class="meter mt-2"><span class="${colors.bg}" style="width:${Math.min(zone.occupancy, 100)}%"></span></div><div class="mt-3 flex items-center justify-between gap-2"><span class="flex items-center gap-1.5 text-[10px] text-slate-400"><i data-lucide="${zone.trend === 'rising' ? 'trending-up' : 'move-right'}" class="size-3 ${colors.icon}"></i>${escapeHTML(zone.direction)}</span><span class="mono text-[9px] text-slate-600">AGGREGATE ONLY</span></div></article>`;
+      }).join('');
+      staffContainer.innerHTML = appState.zones.map((zone) => {
+        const colors = colorMap[zone.color];
+        return `<article class="rounded-md border border-slate-700/80 bg-slate-900/40 p-3"><div class="flex items-center justify-between gap-3"><div class="flex items-center gap-3"><span class="grid size-8 place-items-center rounded bg-slate-800 ${colors.icon}"><i data-lucide="${zone.id === 'gate-2' ? 'users-round' : 'door-open'}" class="size-4"></i></span><div><p class="text-xs font-semibold text-slate-200">${escapeHTML(zone.gate)} <span class="font-normal text-slate-500">· ${escapeHTML(zone.name)}</span></p><p class="mt-1 text-[10px] text-slate-500">${escapeHTML(zone.direction)}</p></div></div><div class="text-right"><p class="mono text-xs ${colors.text}">${zone.occupancy}%</p><p class="text-[9px] text-slate-500">${escapeHTML(zone.status)}</p></div></div><div class="meter mt-3"><span class="${colors.bg}" style="width:${Math.min(zone.occupancy, 100)}%"></span></div></article>`;
+      }).join('');
+      document.getElementById('zone-count').textContent = appState.zones.length;
+      lucide.createIcons();
+    }
+
+    function renderFaqs() {
+      document.getElementById('faq-list').innerHTML = appState.faqs.filter((faq) => faq.approved).map((faq, index) => `<details class="group py-3" ${index === 0 ? 'open' : ''}><summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-medium text-slate-200 marker:hidden"><span>${escapeHTML(faq.question)}</span><i data-lucide="chevron-down" class="size-4 shrink-0 text-slate-500 transition group-open:rotate-180"></i></summary><p class="max-w-prose pt-2 pr-6 text-xs leading-relaxed text-slate-400">${escapeHTML(faq.answer)}</p></details>`).join('');
+      lucide.createIcons();
+    }
+
+    function ticketMarkup(ticket, staff = false) {
+      const complete = ticket.status === 'Returned';
+      return `<article class="flex items-start gap-3 rounded-md border border-slate-700/80 bg-slate-900/40 p-3 ${complete ? 'opacity-60' : ''}"><span class="grid size-8 shrink-0 place-items-center rounded bg-slate-800 text-slate-400"><i data-lucide="${escapeHTML(ticket.icon)}" class="size-4"></i></span><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-x-2 gap-y-1"><span class="mono text-[9px] text-slate-500">${escapeHTML(ticket.id)}</span><span class="rounded border px-1.5 py-0.5 text-[9px] ${complete ? 'border-emerald-500/20 text-emerald-300' : 'border-amber-500/20 text-amber-300'}">${escapeHTML(ticket.status)}</span></div><p class="mt-1 text-xs font-semibold text-slate-200">${escapeHTML(ticket.item)}</p><p class="mt-1 text-[10px] text-slate-500">${escapeHTML(ticket.location)} <span class="text-slate-700">·</span> ${escapeHTML(ticket.time)}</p>${staff && !complete ? `<button type="button" class="resolve-ticket mt-2 flex items-center gap-1 text-[10px] font-medium text-emerald-400 hover:text-emerald-300" data-ticket="${escapeHTML(ticket.id)}"><i data-lucide="check" class="size-3"></i> Mark returned</button>` : ''}</div></article>`;
+    }
+
+    function renderTickets() {
+      document.getElementById('public-tickets').innerHTML = appState.tickets.slice(0, 2).map((ticket) => ticketMarkup(ticket)).join('');
+      document.getElementById('staff-tickets').innerHTML = appState.tickets.map((ticket) => ticketMarkup(ticket, true)).join('');
+      const openCount = appState.tickets.filter((ticket) => ticket.status === 'Open').length;
+      document.getElementById('ticket-counter').textContent = `${String(openCount).padStart(2, '0')} OPEN`;
+      lucide.createIcons();
+    }
+
+    function renderAudit() {
+      document.getElementById('audit-log').innerHTML = appState.audit.slice(0, 6).map((entry) => `<div class="grid gap-1 rounded-md border border-slate-700/60 bg-slate-900/35 px-3 py-2.5 sm:grid-cols-[70px_58px_1fr_1.1fr] sm:items-center sm:gap-3"><span class="mono text-[10px] text-slate-500">${escapeHTML(entry.time)}</span><span class="w-fit rounded border px-1.5 py-0.5 text-[8px] ${entry.level === 'SECURE' ? 'border-sky-400/20 text-sky-300' : 'border-emerald-400/20 text-emerald-400'}">${escapeHTML(entry.level)}</span><span class="text-[11px] text-slate-200">${escapeHTML(entry.event)}</span><span class="text-[10px] text-slate-500">${escapeHTML(entry.detail)}</span></div>`).join('');
+    }
+
+    function renderAll() { renderZones(); renderFaqs(); renderTickets(); renderAudit(); lucide.createIcons(); }
+
+    function switchTab(tabName, focus = false) {
+      document.querySelectorAll('[role="tab"]').forEach((tab) => {
+        const active = tab.dataset.tab === tabName;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+      document.querySelectorAll('[data-view]').forEach((view) => {
+        const active = view.dataset.view === tabName;
+        view.classList.toggle('hidden', !active);
+        view.classList.toggle('view', active);
+      });
+    }
+
+    function toast(message) {
+      const element = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = message;
+      element.classList.remove('opacity-0', 'translate-y-3');
+      element.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toast.timeout);
+      toast.timeout = setTimeout(() => {
+        element.classList.add('opacity-0', 'translate-y-3');
+        element.classList.remove('opacity-100', 'translate-y-0');
+      }, 2600);
+    }
+
+    document.querySelectorAll('[role="tab"]').forEach((tab) => {
+      tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const tabs = [...document.querySelectorAll('[role="tab"]')];
+        const current = tabs.indexOf(tab);
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (current + (event.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+        switchTab(tabs[next].dataset.tab, true);
+      });
+    });
+
+    document.getElementById('report-item').addEventListener('click', () => {
+      const number = 2043 + appState.tickets.length - 2;
+      appState.tickets.unshift({ id: `LF-${number}`, item: 'Unidentified found item', location: 'Temple help desk', time: new Intl.DateTimeFormat('en', { hour: '2-digit', minute: '2-digit', hour12: true }).format(new Date()), status: 'Open', icon: 'package-search' });
+      appState.audit.unshift({ time: new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date()), level: 'INFO', event: 'Lost & found ticket created', detail: `${`LF-${number}`} · anonymous submission` });
+      renderTickets(); renderAudit(); toast(`Anonymous ticket LF-${number} created`);
+    });
+
+    document.getElementById('staff-tickets').addEventListener('click', (event) => {
+      const button = event.target.closest('.resolve-ticket');
+      if (!button) return;
+      const ticket = appState.tickets.find((entry) => entry.id === button.dataset.ticket);
+      if (!ticket) return;
+      ticket.status = 'Returned';
+      appState.audit.unshift({ time: new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date()), level: 'SECURE', event: 'Lost & found ticket resolved', detail: `${ticket.id} · staff action recorded` });
+      renderTickets(); renderAudit(); toast(`${ticket.id} marked as returned`);
+    });
+
+    document.getElementById('refresh-zones').addEventListener('click', (event) => {
+      const button = event.currentTarget;
+      button.classList.add('animate-spin');
+      appState.zones.forEach((zone) => {
+        zone.occupancy = Math.max(8, Math.min(91, zone.occupancy + Math.round(Math.random() * 10 - 5)));
+        zone.color = zone.occupancy >= 80 ? 'rose' : zone.occupancy >= 60 ? 'amber' : 'emerald';
+        zone.status = zone.occupancy >= 80 ? 'High' : zone.occupancy >= 60 ? 'Busy' : zone.occupancy <= 25 ? 'Clear' : 'Calm';
+        zone.trend = zone.occupancy >= 60 ? 'rising' : 'steady';
+      });
+      const timestamp = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date());
+      appState.audit.unshift({ time: timestamp, level: 'INFO', event: 'Zone telemetry refreshed', detail: '3 zones · aggregate sample updated' });
+      renderZones(); renderAudit(); toast('Anonymous zone telemetry refreshed');
+      setTimeout(() => button.classList.remove('animate-spin'), 500);
+    });
+
+    function updateClock() {
+      document.getElementById('clock').textContent = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date());
+    }
+    updateClock(); setInterval(updateClock, 1000);
+    renderAll();
+  </script>
+</body>
+</html>
